@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>API APP-HOME </title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+th{
+  padding: 5px;
+  border: 2px solid blue;
+  background-color: rgb(192, 188, 188);
+}
+
+td{
+	border:2px solid black;
+	padding:5px;
+	text-align:center;
+  background-color: rgb(221, 219, 219);
+}
+table{
+	margin: auto;
+  width: 50%;
+  text-align: center;
+}
+.form-div{
+  margin: auto;
+  width: 50%;
+}
+.add{
+  border:5px solid green;
+  border-radius: 50%;
+  color:green;
+}
+.logout{
+  background-color: rgb(207, 64, 64);
+  border-radius: 25px;
+  border: 5px solid rgb(207, 64, 64);
+  color: white;
+  margin: 5px;
+}
+.del{
+  border-radius: 25px;
+  border:5px solid rgb(207, 64, 64);
+}
+.info{
+  margin: auto;
+  width: 50%;
+}
+.fa-trash{
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<p align = "right"><%- username -%> (<%- plan -%>)  
+<a href = "/"><button class="logout">logout <i class="fa fa-sign-out"></i></button></a></p><br>
+<div class="info">
+  <h2>Available APIs</h2>
+  <ul>
+    <li>{apihost}/words/randomWord/api_key</li>
+    <li>{apihost}/word/{word}/definitions/api_key</li>
+    <li>{apihost}/word/{word}/examples/api_key</li>
+    <li>{apihost}/word/{word}/relatedWords/api_key</li>
+  </ul> 
+</div>
+
+<div class="form-div">
+<form action = "/apicreate" method = "post">
+  <p>Generate new Api key <a type = "submit"><button class="add">+</button></a><p align = "right" style = "margin-top:-30px;">usage today:<%- usage -%></p></p>
+  <input type = "hidden" name = "username" value = "<%- username -%>">
+  </form>
+</div>
+<table> 
+<tr>
+<th>API KEY</th>
+<th>DELETE KEY</th>
+<th>CREATED ON</th>
+<th>USAGE</th>
+</tr>
+<% for(let i in data.key){ %>
+  <tr>
+  <td><%- data.key[i] -%></td>
+  <td><form action = "/deletekey" method = "post">
+		<input type = "hidden" value = "<%- data.key[i] -%>" name = key>
+		<input type = "hidden" value = "<%- username -%>" name = username>
+		<button class="del"><i class="fa fa-trash"></i></button>
+  </form></td>
+  <td><%- data.createdAt[i] -%></td>
+  <td><%- data.usage[i] -%></td>
+  </tr>
+<% } %>
+</table>
+</body>
+</html>

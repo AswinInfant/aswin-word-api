@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>API APP-LOGIN/SIGNUP</title>
+<style>
+#content2{
+	margin: auto;
+  width: 50%;
+  padding:10px;
+}
+
+input[type=email],
+input[type=password]{
+	width:500px;
+	padding: 10px;
+  margin: 5px 0;
+  display: inline-block;
+  border: 5px solid grey;
+
+}
+button{
+	padding: 10px;
+	width:100px;
+	border-radius: 25px;
+	border: 2px solid black;
+	background-color: rgb(106, 226, 106);
+}
+#signup{
+	background-color: rgb(207, 64, 64);
+}
+</style>
+</head>
+<body>
+<h2 align="center">API APP</h2>
+<div id="content2">
+<form method = "post">
+<p>Email Id:</p><input type = "email" name = "username" required>
+<p>Password:</p><input type = "password" name = "password" required>
+<br>
+<button formaction = "/signin" id = "signin">Login</button>&emsp;<button id = "signup" formaction = "/signup">Signup</button>
+</form>
+</div>
+</body>
+</html>
